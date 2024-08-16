@@ -60,6 +60,12 @@ git merge --ff-only "${upstream_remote}/${source_branch}"
 git checkout $crowdin_branch
 git merge --ff-only "${upstream_remote}/${crowdin_branch}"
 
+# Check that crowdin branch has no merge conflicts with respect to the source branch
+git checkout $source_branch
+merge_output=$(git merge --no-commit --no-ff $crowdin_branch)
+
+git checkout $crowdin_branch
+
 # Generate a timestamp for use in branch name
 timestamp=$(date +%Y_%m_%d_%H_%M_%S)
 
