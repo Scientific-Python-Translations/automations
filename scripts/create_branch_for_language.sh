@@ -82,3 +82,6 @@ filter_commits('\$filename', '$language_code')
 
 # Remove the trap if the rebase succeeds. No clean up is necessary.
 trap - EXIT
+
+# Make script output the branch name so it can be used later if needed.
+echo $new_branch
