@@ -63,6 +63,7 @@ git merge --ff-only "${upstream_remote}/${crowdin_branch}"
 # Check that crowdin branch has no merge conflicts with respect to the source branch
 git checkout $source_branch
 merge_output=$(git merge --no-commit --no-ff $crowdin_branch)
+git merge --abort
 
 git checkout $crowdin_branch
 
