@@ -1,4 +1,5 @@
 # maps language codes to language name used in Crowdin.
+# https://developer.crowdin.com/language-codes/
 language_code_map = {
     'ach': 'Acholi',
     'aa': 'Afar',
@@ -304,7 +305,17 @@ language_code_map = {
 }
 
     
-def filter_commits(filename, language_code):
+def filter_commits(filename: str, language_code: str) -> None:
+    """Edits the git-rebase-todo file to pick only commits for one language
+
+    Used in GIT_SEQUENCE_EDITOR for scripted interactive rebase.
+
+    Parameters
+    ----------
+    filename : str
+    language_code : str
+        Crowdin language code.
+    """
     language = language_code_map[language_code.lower()]
 
     with open(filename) as f:
