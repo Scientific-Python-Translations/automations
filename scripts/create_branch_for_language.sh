@@ -51,6 +51,10 @@ language_code=$4
 
 script_location=$(dirname "$0")
 
+# The following lines will ensure that things are in a consistent state to be able
+# to submit a PR upstream. Since we have used `set -e`, any line which causes an
+# error will cause the entire script to exit.
+
 # Make sure source branch is up to date with upstream
 git checkout $source_branch
 git fetch $upstream_remote
